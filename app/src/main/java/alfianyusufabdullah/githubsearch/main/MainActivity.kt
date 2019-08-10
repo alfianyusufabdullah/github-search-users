@@ -1,8 +1,8 @@
-package alfianyusufabdullah.viewmodeltestdrive.main
+package alfianyusufabdullah.githubsearch.main
 
-import alfianyusufabdullah.viewmodeltestdrive.R
-import alfianyusufabdullah.viewmodeltestdrive.data.repository.MainRepository
-import alfianyusufabdullah.viewmodeltestdrive.data.source.MainDataSource
+import alfianyusufabdullah.githubsearch.R
+import alfianyusufabdullah.githubsearch.data.repository.MainRepository
+import alfianyusufabdullah.githubsearch.data.source.MainDataSource
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 

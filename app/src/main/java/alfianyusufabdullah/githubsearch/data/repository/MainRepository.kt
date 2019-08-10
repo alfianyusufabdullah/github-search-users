@@ -1,6 +1,6 @@
-package alfianyusufabdullah.viewmodeltestdrive.data.repository
+package alfianyusufabdullah.githubsearch.data.repository
 
-import alfianyusufabdullah.viewmodeltestdrive.data.source.MainDataSource
+import alfianyusufabdullah.githubsearch.data.source.MainDataSource
 
 class MainRepository(private val dataSource: MainDataSource) {
 

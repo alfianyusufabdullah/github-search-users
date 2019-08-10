@@ -1,8 +1,8 @@
-package alfianyusufabdullah.viewmodeltestdrive.main
+package alfianyusufabdullah.githubsearch.main
 
-import alfianyusufabdullah.viewmodeltestdrive.common.Dummy
-import alfianyusufabdullah.viewmodeltestdrive.data.repository.MainRepository
-import alfianyusufabdullah.viewmodeltestdrive.data.repository.MainRepositoryCallback
+import alfianyusufabdullah.githubsearch.common.Dummy
+import alfianyusufabdullah.githubsearch.data.repository.MainRepository
+import alfianyusufabdullah.githubsearch.data.repository.MainRepositoryCallback
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.nhaarman.mockitokotlin2.argumentCaptor

@@ -1,6 +1,6 @@
-package alfianyusufabdullah.viewmodeltestdrive.main
+package alfianyusufabdullah.githubsearch.main
 
-import alfianyusufabdullah.viewmodeltestdrive.data.entity.MainEntity
+import alfianyusufabdullah.githubsearch.data.entity.MainEntity
 
 sealed class MainViewModelState
 

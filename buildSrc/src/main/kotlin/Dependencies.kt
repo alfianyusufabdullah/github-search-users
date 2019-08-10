@@ -53,7 +53,7 @@ object Android {
     const val gradle = "com.android.tools.build:gradle:$androidGradleVersion"
 
     object DefaultConfig {
-        const val id = "alfianyusufabdullah.viewmodeltestdrive"
+        const val id = "alfianyusufabdullah.githubsearch"
         const val minimalSDKVersion = 21
         const val targetSDKVersion = 29
 

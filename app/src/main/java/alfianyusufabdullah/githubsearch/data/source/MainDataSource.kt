@@ -1,6 +1,6 @@
-package alfianyusufabdullah.viewmodeltestdrive.data.source
+package alfianyusufabdullah.githubsearch.data.source
 
-import alfianyusufabdullah.viewmodeltestdrive.data.entity.MainEntity
+import alfianyusufabdullah.githubsearch.data.entity.MainEntity
 
 class MainDataSource {
 

@@ -1,8 +1,8 @@
-package alfianyusufabdullah.viewmodeltestdrive.main
+package alfianyusufabdullah.githubsearch.main
 
-import alfianyusufabdullah.viewmodeltestdrive.data.entity.MainEntity
-import alfianyusufabdullah.viewmodeltestdrive.data.repository.MainRepository
-import alfianyusufabdullah.viewmodeltestdrive.data.repository.MainRepositoryCallback
+import alfianyusufabdullah.githubsearch.data.entity.MainEntity
+import alfianyusufabdullah.githubsearch.data.repository.MainRepository
+import alfianyusufabdullah.githubsearch.data.repository.MainRepositoryCallback
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
