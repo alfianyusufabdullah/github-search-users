@@ -1,19 +1,19 @@
 plugins {
-    id(Dependencies.Plugin.androidApplicationId)
-    kotlin(Dependencies.Plugin.kotlinAndroid)
-    kotlin(Dependencies.Plugin.kotlinAndroidExtensions)
+    id(Plugin.androidApplicationId)
+    kotlin(Plugin.kotlinAndroid)
+    kotlin(Plugin.kotlinAndroidExtensions)
 }
 
 android {
-    compileSdkVersion(Dependencies.Android.compileSdkVersion)
-    buildToolsVersion(Dependencies.Android.buildToolsVersion)
+    compileSdkVersion(Android.compileSdkVersion)
+    buildToolsVersion(Android.buildToolsVersion)
     defaultConfig {
-        applicationId = Dependencies.Android.DefaultConfig.id
-        minSdkVersion(Dependencies.Android.DefaultConfig.minimalSDKVersion)
-        targetSdkVersion(Dependencies.Android.DefaultConfig.targetSDKVersion)
-        versionCode = Dependencies.Android.DefaultConfig.versionCode
-        versionName = Dependencies.Android.DefaultConfig.versionName
-        testInstrumentationRunner = Dependencies.Android.DefaultConfig.testInstrumentationRunner
+        applicationId = Android.DefaultConfig.id
+        minSdkVersion(Android.DefaultConfig.minimalSDKVersion)
+        targetSdkVersion(Android.DefaultConfig.targetSDKVersion)
+        versionCode = Android.DefaultConfig.versionCode
+        versionName = Android.DefaultConfig.versionName
+        testInstrumentationRunner = Android.DefaultConfig.testInstrumentationRunner
     }
     buildTypes {
 
@@ -28,7 +28,7 @@ dependencies {
     implementation(
         fileTree("dir" to "libs", "include" to listOf("*.jar"))
     )
-    implementation(Dependencies.Kotlin.standardLibrary)
+    implementation(Kotlin.standardLibrary)
     implementation(Dependencies.AndroidX.appCompat)
     implementation(Dependencies.AndroidX.core)
     implementation(Dependencies.AndroidX.constraintLayout)

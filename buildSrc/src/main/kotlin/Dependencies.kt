@@ -14,17 +14,6 @@ private const val testMockito = "3.0.0"
 
 object Dependencies {
 
-    object Plugin {
-        const val androidApplicationId = "com.android.application"
-        const val kotlinAndroid = "android"
-        const val kotlinAndroidExtensions = "android.extensions"
-    }
-
-    object Kotlin {
-        const val gradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        const val standardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
-    }
-
     object AndroidX {
         const val appCompat = "androidx.appcompat:appcompat:$androidXAppCompat"
         const val constraintLayout = "androidx.constraintlayout:constraintlayout:$androidXConstraintLayout"
@@ -36,23 +25,6 @@ object Dependencies {
         }
     }
 
-    object Android {
-        const val compileSdkVersion = 29
-        const val buildToolsVersion = "29.0.1"
-        const val gradle = "com.android.tools.build:gradle:$androidGradleVersion"
-
-        object DefaultConfig {
-            const val id = "alfianyusufabdullah.viewmodeltestdrive"
-            const val minimalSDKVersion = 21
-            const val targetSDKVersion = 29
-
-            const val versionCode = 1
-            const val versionName = "0.0.1"
-
-            const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        }
-    }
-
     object Test {
         const val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:$testMockitoKotlin"
         const val mockitoCore = "org.mockito:mockito-core:$testMockito"
@@ -61,5 +33,33 @@ object Dependencies {
         const val junit = "junit:junit:$testJunit"
 
         const val androidArchCore = "android.arch.core:core-testing:$testAndroid"
+    }
+}
+
+object Plugin {
+    const val androidApplicationId = "com.android.application"
+    const val kotlinAndroid = "android"
+    const val kotlinAndroidExtensions = "android.extensions"
+}
+
+object Kotlin {
+    const val gradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    const val standardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+}
+
+object Android {
+    const val compileSdkVersion = 29
+    const val buildToolsVersion = "29.0.1"
+    const val gradle = "com.android.tools.build:gradle:$androidGradleVersion"
+
+    object DefaultConfig {
+        const val id = "alfianyusufabdullah.viewmodeltestdrive"
+        const val minimalSDKVersion = 21
+        const val targetSDKVersion = 29
+
+        const val versionCode = 1
+        const val versionName = "0.0.1"
+
+        const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 }
