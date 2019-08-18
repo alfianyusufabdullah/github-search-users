@@ -4,9 +4,18 @@ import alfianyusufabdullah.githubsearch.data.entity.MainEntity
 
 class MainDataSource {
 
-    fun requestMainData(): MutableList<MainEntity>? = mutableListOf(
-        MainEntity("Alfian", 18),
-        MainEntity("Yusuf", 15),
-        MainEntity("Abdullah", 14)
-    )
+    /**
+     * should be replace with real network request, ieu
+     */
+    fun doSearch(username: String, mainDataSourceCallback: MainDataSourceCallback) {
+        mainDataSourceCallback.onStart()
+        if (username.isEmpty()) {
+            mainDataSourceCallback.onError("Username is empty")
+        } else {
+            val data = Array(10) {
+                MainEntity("Name $it", 4 * it)
+            }
+            mainDataSourceCallback.onData(data.toList())
+        }
+    }
 }
