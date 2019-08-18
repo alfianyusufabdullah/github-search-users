@@ -1,24 +1,14 @@
 package alfianyusufabdullah.githubsearch.main
 
-import alfianyusufabdullah.githubsearch.data.entity.MainEntity
-import alfianyusufabdullah.githubsearch.data.repository.MainRepository
-import alfianyusufabdullah.githubsearch.data.repository.MainRepositoryCallback
+import alfianyusufabdullah.githubsearch.data.repository.MainRepositoryImpl
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
+class MainViewModel(private val mainRepositoryImpl: MainRepositoryImpl) : ViewModel() {
 
-    val dataState = MutableLiveData<MainViewModelState>()
+    var dataState = MutableLiveData<MainViewModelState>()
 
-    fun requestData() {
-        mainRepository.requestData(object : MainRepositoryCallback {
-            override fun onFailed(exception: Throwable) {
-                dataState.postValue(OnFailed(exception.message ?: "something weird"))
-            }
-
-            override fun onResponse(data: List<MainEntity>) {
-                dataState.postValue(OnResponse(data))
-            }
-        })
+    fun doSearch(username: String) {
+        dataState = mainRepositoryImpl.doSearch(username)
     }
 }
