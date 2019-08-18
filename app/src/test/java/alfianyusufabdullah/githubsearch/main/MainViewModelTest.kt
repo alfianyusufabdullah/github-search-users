@@ -1,17 +1,20 @@
 package alfianyusufabdullah.githubsearch.main
 
 import alfianyusufabdullah.githubsearch.common.Dummy
-import alfianyusufabdullah.githubsearch.data.repository.MainRepository
-import alfianyusufabdullah.githubsearch.data.repository.MainRepositoryCallback
+import alfianyusufabdullah.githubsearch.data.repository.MainRepositoryImpl
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.argumentCaptor
 import com.nhaarman.mockitokotlin2.verify
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.mockito.ArgumentMatchers
 import org.mockito.Mock
+import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 
 class MainViewModelTest {
@@ -24,9 +27,9 @@ class MainViewModelTest {
     lateinit var observer: Observer<MainViewModelState>
 
     @Mock
-    lateinit var mainRepository: MainRepository
+    lateinit var mainRepositoryImpl: MainRepositoryImpl
 
-    lateinit var mainViewModel: MainViewModel
+    private lateinit var mainViewModel: MainViewModel
 
     private val expectedResponse = Dummy.getDummyData
     private val expectedFailed = "test expected throwable"
@@ -35,18 +38,17 @@ class MainViewModelTest {
     fun setup() {
         MockitoAnnotations.initMocks(this)
 
-        mainViewModel = MainViewModel(mainRepository)
+        mainViewModel = MainViewModel(mainRepositoryImpl)
     }
 
     @Test
     fun `test should be success to observe data`() {
-        mainViewModel.requestData()
+        val expected = MutableLiveData<MainViewModelState>()
+        expected.postValue(OnResponse(expectedResponse))
 
-        argumentCaptor<MainRepositoryCallback>().apply {
-            verify(mainRepository).requestData(capture())
-            firstValue.onResponse(expectedResponse)
-        }
+        Mockito.`when`(mainRepositoryImpl.doSearch(any())).thenReturn(expected)
 
+        mainViewModel.doSearch(ArgumentMatchers.anyString())
         mainViewModel.dataState.observeForever(observer)
 
         verify(observer).onChanged(OnResponse(expectedResponse))
@@ -54,28 +56,29 @@ class MainViewModelTest {
 
     @Test
     fun `test should be failed to retrieve data`() {
-        mainViewModel.requestData()
+        val expected = MutableLiveData<MainViewModelState>()
+        expected.postValue(OnFailed(expectedFailed))
 
-        argumentCaptor<MainRepositoryCallback>().apply {
-            verify(mainRepository).requestData(capture())
-            firstValue.onFailed(Throwable(expectedFailed))
-        }
+        Mockito.`when`(mainRepositoryImpl.doSearch(any())).thenReturn(expected)
 
+        mainViewModel.doSearch(ArgumentMatchers.anyString())
         mainViewModel.dataState.observeForever(observer)
 
         verify(observer).onChanged(OnFailed(expectedFailed))
+
+        Assert.assertEquals(expected.value, mainViewModel.dataState.value)
     }
 
     @Test
     fun `test assert value of data`() {
-        mainViewModel.requestData()
+        val expected = MutableLiveData<MainViewModelState>()
+        expected.postValue(OnResponse(expectedResponse))
 
-        argumentCaptor<MainRepositoryCallback>().apply {
-            verify(mainRepository).requestData(capture())
-            firstValue.onResponse(expectedResponse)
-        }
+        Mockito.`when`(mainRepositoryImpl.doSearch(any())).thenReturn(expected)
 
-        Assert.assertNotNull(mainViewModel.dataState.value)
+        mainViewModel.doSearch(ArgumentMatchers.anyString())
+        mainViewModel.dataState.observeForever(observer)
+
         Assert.assertNotNull((mainViewModel.dataState.value as OnResponse).data)
 
         expectedResponse.forEachIndexed { index, expectedValue ->
